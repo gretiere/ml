@@ -11,6 +11,9 @@ K = size(centroids, 1);
 % You need to return the following variables correctly.
 idx = zeros(size(X,1), 1);
 
+N = size(X,2);  
+broadcastX = ones(K, 1);
+
 % ====================== YOUR CODE HERE ======================
 % Instructions: Go over every example, find its closest centroid, and store
 %               the index inside idx at the appropriate location.
@@ -20,7 +23,20 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+m = length(X);
+for i=1:length(X)
+    % for k=1:K       
+    %     for n=1:N   
+    %         a(n)=(X(i,n)-centroids(k,n)).^2;    % Calc distance from X to centroids (sum to N, not just 2)
+    %     end
+    %     dist(k)=sum(a);     % Distance from point X to centroids 
+    % end
+    % [r,c] = min(dist);      % Find the index of the min distance btw X and centroids
 
+    [r,c] = min(sum( (broadcastX * X(i,:) - centroids) .^ 2, 2));
+
+    idx(i) = c;             % Assign for each X which centroid it belongs to
+end
 
 
 
