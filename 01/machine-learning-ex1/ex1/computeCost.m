@@ -13,10 +13,12 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-h = X*theta;
-sqErr = (h-y).^2;
-
-J = 1/(2*m)*(sum(sqErr));
+% hypothesis
+h = X * theta;
+% vertical distance between predicted and real values
+vd = h - y;
+% cost
+J = 1/(2*m) * (vd' * vd);
 
 
 % =========================================================================
