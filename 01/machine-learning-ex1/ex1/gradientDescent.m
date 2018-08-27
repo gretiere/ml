@@ -17,11 +17,12 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-
-
-
-
-
+    % hypothesis
+    h = X * theta;
+    % vertical distance between predicted and real values
+    vd = h - y;
+    % updated theta
+    theta = theta - (alpha/m) * (X' * vd);
 
     % ============================================================
 
